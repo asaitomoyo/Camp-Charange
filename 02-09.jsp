@@ -11,14 +11,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form action="http://localhost:8084/javaKiso1/02-09.jsp" method="get">
-            <p>
-            数値：<input type="text" name="num" size="15">
-            </p>
-            <p>
-            <input type="submit" value="送信"><input type="reset" value="リセット">
-            </p>
-        </form>
+        
         
 <%
 //課題10.簡易素因数分解のロジックを作成します。
@@ -36,31 +29,35 @@
         String num = request.getParameter("num"); 
         /*Stringからint型へ変換*/
         int org = Integer.parseInt(num);
+        
+        while(org != 1){
+            //素数2,3,5,7
+            if (org % 2 == 0){
+                out.print(2);
+                out.print(" ");
+                org /=2;
 
-        //素数2,3,5,7
-        if (org % 2 == 0){
-            out.println( org);
-            out.println(2);
-            org /=2;
-            
-        }else if(org % 3 == 0){
-            out.println( org);
-            out.print(3);
-            org /=3;
-            
-        }else if(org % 5 == 0){
-            out.println( org);
-            out.print(5);
-            org /= 5;
-            
-        }else if(org % 7 == 0){
-            out.println( org);
-            out.print(7);
-            org /= 7;
-        }else{
-            out.print("その他");
+            }else if(org % 3 == 0){
+                out.print(3);
+                out.print(" ");
+                org /=3;
+
+            }else if(org % 5 == 0){
+                out.print(5);
+                out.print(" ");
+                org /= 5;
+
+            }else if(org % 7 == 0){
+                out.print(7);
+                out.print(" ");
+                org /= 7;
+
+            }else{
+                out.print("その他");
+            }
         }
-    }
+        
+    //http://localhost:8084/JavaKiso/02-09.jsp?num=200
 
 %>
     </body>
