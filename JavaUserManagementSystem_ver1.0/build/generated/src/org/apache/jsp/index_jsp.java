@@ -55,7 +55,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <h1>ユーザー情報管理トップ</h1><br>\n");
       out.write("    <h3>ここでは、ユーザー情報管理システムとしてユーザー情報の登録や検索、\n");
       out.write("        付随して修正や削除を行うことができます</h3><br>\n");
-      out.write("    <a href=\"insert\">新規登録</a><br>\n");
+      out.write("    <a href=\"Insert\">新規登録</a><br>\n");
       out.write("    <a href=\"\" >検索(修正・削除)</a><br>\n");
       out.write("    \n");
       out.write("    ");

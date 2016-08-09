@@ -1,6 +1,7 @@
 package jums;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +28,11 @@ public class InsertConfirm extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         try {
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession();//
+//            out.println(request.getParameter("ac"));
+            
             request.setCharacterEncoding("UTF-8");//セッションに格納する文字コードをUTF-8に変更
             String accesschk = request.getParameter("ac");
             if (accesschk == null || (Integer) session.getAttribute("ac") != Integer.parseInt(accesschk)) {
@@ -44,15 +48,13 @@ public class InsertConfirm extends HttpServlet {
             String tell = request.getParameter("tell");
             String comment = request.getParameter("comment");
       
-            //3.beansへ格納    
+            //3.セッションスコープに保存するインスタンス生成    
             UserDataBeans udb = new UserDataBeans();     
             udb.setName(name);
             udb.setYear(year);
             udb.setMonth(month);            
             udb.setDay(day);
-            
-            udb.setType(Integer.parseInt(type));//
-            
+            udb.setType(type);// String型
             udb.setTell(tell);
             udb.setComment(comment);
             
@@ -73,9 +75,12 @@ public class InsertConfirm extends HttpServlet {
            
 
             request.getRequestDispatcher("/insertconfirm.jsp").forward(request, response);
+            
         } catch (Exception e) {
             request.setAttribute("error", e.getMessage());
             request.getRequestDispatcher("/error.jsp").forward(request, response);
+        }finally{
+            
         }
 
     }

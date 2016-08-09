@@ -26,25 +26,27 @@
         上記の内容で登録します。よろしいですか？
         <form action="insertresult" method="POST">
             <input type="submit" name="yes" value="はい">
+            <%--セッションスコープからインスタンス"ac"取得--%>
+            <input type="hidden" name="ac"  value="<%= hs.getAttribute("ac")%>">
         </form>
     <% }else{ %>
         <h1>入力が不完全です</h1>
+        
+        
         
         <%if(udb.getCheck() == false){ %>
             名前の入力がありません<br>
         <% }if("".equals(udb.getName())){ %>
             生年月日の入力がありません<br>
-        
-        
+        <% }else if(udb.getYear() != 0 || udb.getMonth() != 0 || udb.getDay() != 0){ %>
             種別の入力がありません<br>
-        
-            
+        <% }else if(udb.getType() != 0){ %>
             電話番号の入力がありません<br>
-        <% }if("".equals(udb.getTell())){ %>
+        <% }else if("".equals(udb.getTell())){ %>
             自己紹介の入力がありません<br>
-        <% }if("".equals(udb.getComment())){ %>    
-        }
-        %>
+        <% }else if("".equals(udb.getComment())){ %>    
+        
+           <% } %>
         
     <% } %>
         <form action="insert" method="POST">

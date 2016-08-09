@@ -91,6 +91,8 @@ public final class insertconfirm_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\n");
       out.write("        <h1>入力が不完全です</h1>\n");
       out.write("        \n");
+      out.write("        \n");
+      out.write("        \n");
       out.write("        ");
 if(udb.getCheck() == false){ 
       out.write("\n");
@@ -100,20 +102,24 @@ if(udb.getCheck() == false){
       out.write("\n");
       out.write("            生年月日の入力がありません<br>\n");
       out.write("        ");
- }if(udb.getYear()==0 || udb.getMonth() ==0 || udb.getDay() ==0){ 
+ }else if(udb.getYear() != 0 || udb.getMonth() != 0 || udb.getDay() != 0){ 
       out.write("\n");
       out.write("            種別の入力がありません<br>\n");
-      out.write("            \n");
+      out.write("        ");
+ }else if(udb.getType() != 0){ 
+      out.write("\n");
       out.write("            電話番号の入力がありません<br>\n");
       out.write("        ");
- }if("".equals(udb.getTell())){ 
+ }else if("".equals(udb.getTell())){ 
       out.write("\n");
       out.write("            自己紹介の入力がありません<br>\n");
       out.write("        ");
- }if("".equals(udb.getComment())){ 
+ }else if("".equals(udb.getComment())){ 
       out.write("    \n");
-      out.write("        }\n");
-      out.write("        %>\n");
+      out.write("        \n");
+      out.write("           ");
+ } 
+      out.write("\n");
       out.write("        \n");
       out.write("    ");
  } 

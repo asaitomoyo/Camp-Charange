@@ -15,9 +15,9 @@ import java.io.Serializable;
 public class UserDataBeans implements Serializable {
     
     private String name;
-    private String year;
-    private String month;
-    private String day;
+    private int year;
+    private int month;
+    private int day;
     private int type; //
     private String tell;
     private String comment;
@@ -25,17 +25,18 @@ public class UserDataBeans implements Serializable {
     //4.insertconfirmにて、フォームの内容が未入力であっても通過してしまう場合がある。
     //これを通過させないようにし、かつどの項目が不完全なのかをわかるようにしなさい
 
-    private boolean check1;
-    private boolean check2;
+    private boolean isCheck;
     
-    public boolean getCheck1(){
-        if (!name.equals("") &&  tell.equals("") && comment.equals("")) {
-            check1 =true;
+    public boolean getCheck(){
+        if (!"".equals(name) && !"".equals(tell) && !"".equals(comment)) { //""でない
+            if(year != 0 && month != 0 && day != 0&& type != 0){
+            isCheck =true;   
+            }
         }
-        return check1;
+        return isCheck;
     }
-    public void setCheck1 (boolean check){
-        this.check1 =check;
+    public void setCheck (boolean check){
+        this.isCheck =check;
     }
 
     public UserDataBeans() { }
@@ -57,20 +58,20 @@ public class UserDataBeans implements Serializable {
     /**
      * @return the year
      */
-    public String getYear() {
+    public int getYear() {
         return year;
     }
     /**
      * @param year the year to set
      */
     public void setYear(String year) {
-        this.year = year;
+        this.year = Integer.parseInt(year);
     }
 
     /**
      * @return the month
      */
-    public String getMonth() {
+    public int getMonth() {
         return month;
     }
 
@@ -78,13 +79,13 @@ public class UserDataBeans implements Serializable {
      * @param month the month to set
      */
     public void setMonth(String month) {
-        this.month = month;
+        this.month = Integer.parseInt(month);
     }
 
     /**
      * @return the day
      */
-    public String getDay() {
+    public int getDay() {
         return day;
     }
 
@@ -92,7 +93,7 @@ public class UserDataBeans implements Serializable {
      * @param day the day to set
      */
     public void setDay(String day) {
-        this.day = day;
+        this.day = Integer.parseInt(day);
     }
 
     /**
@@ -102,11 +103,11 @@ public class UserDataBeans implements Serializable {
         return type;
     }
 
-    /**
+    /**udb.setType(Integer.parseInt(type));
      * @param type the type to set
      */
-    public void setType(int type) {
-        this.type = (type);
+    public void setType(String type) {
+        this.type = Integer.parseInt(type);
     }
 
     /**

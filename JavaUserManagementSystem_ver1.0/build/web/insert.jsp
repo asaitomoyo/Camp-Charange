@@ -1,5 +1,6 @@
 <%@page import="javax.servlet.http.HttpSession" %>
 <%@page import="jums.JumsHelper" %>
+<%@page import="jums.UserDataBeans" %>
 <%
     HttpSession hs = request.getSession();
 %>
@@ -11,7 +12,7 @@
         <title>JUMS登録画面</title>
     </head>
     <body>
-    <form action="insertconfirm" method="POST">
+    <form action="insertconfirm" method="GET">
         名前:
         <input type="text" name="name" value="">
         <br><br>
@@ -56,6 +57,7 @@
         <textarea name="comment" rows=10 cols=50 style="resize:none" wrap="hard"></textarea><br><br>
         
         <input type="hidden" name="ac"  value="<%= hs.getAttribute("ac")%>"> 
+        <%= hs.getAttribute("ac") %>
         
         <input type="submit" name="btnSubmit" value="確認画面へ">
         

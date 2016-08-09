@@ -30,6 +30,7 @@ public class InsertResult extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         
         //セッションスタート
         HttpSession session = request.getSession();
@@ -38,6 +39,8 @@ public class InsertResult extends HttpServlet {
         
         
         try{
+            request.setCharacterEncoding("UTF-8");
+            
             String accesschk = request.getParameter("ac");
             if(accesschk ==null || (Integer)session.getAttribute("ac")!=Integer.parseInt(accesschk)){
                 throw new Exception("不正なアクセスです");
@@ -47,22 +50,21 @@ public class InsertResult extends HttpServlet {
             UserDataDTO userdata = new UserDataDTO();
             userdata.setName(udb.getName());
             
-            //6.入力された生年月日の情報をDBに正しく格納するためにStringをintに変換
+            //6.入力された生年月日の情報をDBに正しく格納するためにudb.getter(int型)を
             Calendar birthday = Calendar.getInstance();//Calenderクラスを取得
-            int year = Integer.parseInt(udb.getYear());
-            int  month= Integer.parseInt(udb.getMonth()+1);
-            int day = Integer.parseInt(udb.getDay());
+            int year = birthday.get(udb.getYear());
+            int  month=birthday.get(udb.getMonth()) + 1;
+            int day = birthday.get(udb.getDay());
             birthday.set(year, month, day); 
             
             userdata.setBirthday(birthday.getTime());
             
-            userdata.setType(udb.getType());//Stringをintに変換できない
-            
+            userdata.setType(udb.getType());//getType() int型
             userdata.setTell(udb.getTell());
             userdata.setComment(udb.getComment());
             
             //DBへデータの挿入
-            UserDataDAO .getInstance().insert(userdata);
+            UserDataDAO.getInstance().insert(userdata);
             
             request.getRequestDispatcher("/insertresult.jsp").forward(request, response);
             

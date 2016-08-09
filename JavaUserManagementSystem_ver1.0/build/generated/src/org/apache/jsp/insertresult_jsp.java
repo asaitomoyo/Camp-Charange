@@ -3,6 +3,7 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import jums.UserDataBeans;
 import jums.JumsHelper;
 import javax.servlet.http.HttpSession;
 
@@ -43,10 +44,12 @@ public final class insertresult_jsp extends org.apache.jasper.runtime.HttpJspBas
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\n');
-      out.write('\n');
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
 
     HttpSession hs = request.getSession();
+    UserDataBeans udb = (UserDataBeans) session.getAttribute("udb");
 
       out.write("\n");
       out.write("\n");
@@ -59,19 +62,19 @@ public final class insertresult_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("    <body>\n");
       out.write("        <h1>登録結果</h1><br>\n");
       out.write("        名前:");
-      out.print( hs.getAttribute("name"));
+      out.print( udb.getName());
       out.write("<br>\n");
       out.write("        生年月日:");
-      out.print( hs.getAttribute("year")+"年"+hs.getAttribute("month")+"月"+hs.getAttribute("day")+"日");
+      out.print( udb.getYear()+"年"+udb.getMonth()+"月"+udb.getDay()+"日");
       out.write("<br>\n");
       out.write("        種別:");
-      out.print( hs.getAttribute("type"));
+      out.print( udb.getType());
       out.write("<br>\n");
       out.write("        電話番号:");
-      out.print( hs.getAttribute("tell"));
+      out.print( udb.getTell());
       out.write("<br>\n");
       out.write("        自己紹介:");
-      out.print( hs.getAttribute("comment"));
+      out.print( udb.getComment());
       out.write("<br>\n");
       out.write("        以上の内容で登録しました。<br>\n");
       out.write("        \n");

@@ -5,6 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import javax.servlet.http.HttpSession;
 import jums.JumsHelper;
+import jums.UserDataBeans;
 
 public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -43,8 +44,9 @@ public final class insert_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write('\n');
-      out.write('\n');
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
 
     HttpSession hs = request.getSession();
 
