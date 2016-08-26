@@ -1,0 +1,13 @@
+SMAP
+buycomplete_jsp.java
+JSP
+*S JSP
+*F
++ 0 buycomplete.jsp
+buycomplete.jsp
+*L
+5,7:45
+11,10:52
+21:62,3
+22,3:65
+*E
